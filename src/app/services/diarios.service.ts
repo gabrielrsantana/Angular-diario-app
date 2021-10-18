@@ -10,7 +10,7 @@ export class DiariosService {
 
   constructor(private db: AngularFirestore, private authService: AuthService) { }
 
-  getDiaries(ownerKey:string){
+  getDiaries(ownerKey:string){  //usuario logado
     return this.db.collection<Diary>('diaries',(ref)=>
       ref.where('ownerKey','==','ownerKey')
     ).snapshotChanges().pipe(//mapear
