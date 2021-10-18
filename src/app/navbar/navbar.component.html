@@ -26,6 +26,7 @@
           <a class="nav-link" routerLink="/diarios" (click)="close()">Diários</a>
         </li>
       </ul>
+      <!-- se tiver usuario joga na variavel -->
       <ul class="navbar-nav ml-auto" *ngIf="user$ | async as user; else unlogged">
         <li class="nav-item">
           <a

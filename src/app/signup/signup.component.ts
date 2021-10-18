@@ -1,15 +1,22 @@
+import { AuthService } from '../services/auth.service';
+import { SignupData } from './signup-data';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent{
+  data: SignupData = {} as SignupData;
 
-  constructor() { }
+  signupError: string = '';
 
-  ngOnInit(): void {
+  onSubmit() {
+    this.authService.signup(this.data);
   }
 
+  constructor(private authService: AuthService) {
+    this.authService.errorEmitter.subscribe((msg) => (this.signupError = msg));
+  }
 }
