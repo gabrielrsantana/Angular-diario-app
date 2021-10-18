@@ -17,6 +17,6 @@ export class SignupComponent{
   }
 
   constructor(private authService: AuthService) {
-    this.authService.errorEmitter.subscribe((msg) => (this.signupError = msg));
+    this.authService.errorEmitter.subscribe((err) => (this.signupError = err));
   }
 }
