@@ -10,20 +10,23 @@ export class DiariosService {
 
   constructor(private db: AngularFirestore, private authService: AuthService) { }
 
-  getDiaries(ownerKey:string){  //usuario logado
-    return this.db.collection<Diary>('diaries',(ref)=>
-      ref.where('ownerKey','==','ownerKey')
-    ).snapshotChanges().pipe(//mapear
-      map((snapshots)=>{
-        return snapshots.map((doc)=>{
-          return {
-            key: doc.payload.doc.id,  //id do documento pra deleta
-            ...doc.payload.doc.data()  //extrai os dados
-          }as Diary
+  getDiaries(ownerKey: string) {
+    return this.db
+      .collection<Diary>('diaries', (ref) =>
+        ref.where('ownerKey', '==', ownerKey)
+      )
+      .snapshotChanges()
+      .pipe(
+        map((snapshots) => {
+          return snapshots.map((doc) => {
+            return {
+              key: doc.payload.doc.id,
+              ...doc.payload.doc.data(),
+            } as Diary;
+          });
         })
-      })
-    );
-  }//getDiaries
+      );
+  }
 
   getAllDiaries(){
    return this.db.collection<Diary>('diaries').valueChanges();// obervable, tem que coloca o tipo Diary
