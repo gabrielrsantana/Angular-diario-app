@@ -28,8 +28,10 @@ export class DiariosService {
       );
   }
 
+  // observable, tem que coloca o tipo: Diary
+  //valueschanges, se ,mudar algo no firebase ele retorna
   getAllDiaries(){
-   return this.db.collection<Diary>('diaries').valueChanges();// obervable, tem que coloca o tipo Diary
+   return this.db.collection<Diary>('diaries').valueChanges();
   }
 
 

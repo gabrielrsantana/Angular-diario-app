@@ -42,4 +42,5 @@ export class DiariosComponent implements OnInit {
       }
     });
   }
+  
 }
