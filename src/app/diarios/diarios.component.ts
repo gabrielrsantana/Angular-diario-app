@@ -13,9 +13,7 @@ import { DiariosService } from '../services/diarios.service';
   styleUrls: ['./diarios.component.css'],
 })
 export class DiariosComponent implements OnInit {
-  constructor(
-    private modalService: NgbModal,
-    private diariosService: DiariosService,
+  constructor( private modalService: NgbModal, private diariosService: DiariosService,
     private authService: AuthService
   ) {}
 
